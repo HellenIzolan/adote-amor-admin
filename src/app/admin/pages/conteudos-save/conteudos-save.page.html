@@ -24,8 +24,8 @@
     <ion-item>
       <ion-label>Descrição: </ion-label>
       <ion-icon name="text-outline" slot="start" color="primary"></ion-icon>
-      <ion-input type="text" placeholder="Ex: Novidades na área de..." inputmode="text" formControlName="descricao">
-      </ion-input>
+      <ion-textarea type="text" placeholder="Ex: Novidades na área de..." inputmode="text" formControlName="descricao">
+      </ion-textarea>
       <ion-note slot="end" color="danger" *ngIf="descricao.dirty && descricao.hasError('required')">
         *Obrigatório
       </ion-note>
@@ -36,12 +36,8 @@
     <ion-item>
       <ion-label>Data: </ion-label>
       <ion-icon name="calendar" slot="start" color="primary"></ion-icon>
-      <ion-datetime
-        cancel-text="Cancelar"
-        done-text="Salvar"
-        displayFormat="DD/MM/YYYY"
-        formControlName="data"
-      ></ion-datetime>
+      <ion-datetime cancel-text="Cancelar" done-text="Salvar" displayFormat="DD/MM/YYYY" formControlName="data">
+      </ion-datetime>
       <ion-note slot="end" color="danger" *ngIf="data.dirty && data.hasError('required')">
         *Obrigatório
       </ion-note>
@@ -49,18 +45,18 @@
     <ion-item>
       <ion-label>Imagem: </ion-label>
       <ion-icon name="document" slot="start" color="primary"></ion-icon>
-      <ion-input text-left type="file" (change)="upload($event)" accept=".png,.jpg,.jpeg"  autofocus="true"></ion-input>
+      <ion-input text-left type="file" (change)="upload($event)" accept=".png,.jpg,.jpeg" autofocus="true"></ion-input>
       <ion-note slot="end" color="danger" *ngIf="imagem.dirty && imagem.hasError('required')">
         *Obrigatório
       </ion-note>
       <ion-input autofocus="true" inputmode="text" formControlName="imagem" hidden> </ion-input>
     </ion-item>
     <ion-item padding *ngIf="imagem.value != ''">
-      <ion-img style="width:200px;" [src]="imagem.value"></ion-img>      
+      <ion-img style="width:200px;" [src]="imagem.value"></ion-img>
     </ion-item>
     <ion-item class="ion-justify-content-center">
-      <a *ngIf="downloadURL | async; let uploadSrc" [href]="uploadSrc" target="_blank">Baixar o arquivo enviado</a>
-      <ion-img *ngIf="downloadURL | async; let url" [src]="url" alt="Image from AngularFireStorage"></ion-img>      
+      <!--<a *ngIf="downloadURL | async; let uploadSrc" [href]="uploadSrc" target="_blank">Baixar o arquivo enviado</a>-->
+      <ion-img *ngIf="downloadURL | async; let url" [src]="url" alt="Image from AngularFireStorage"></ion-img>
     </ion-item>
     <!--<ion-fab vertical="bottom" horizontal="end" slot="fixed">
       <ion-fab-button (click)="addPhotoToGallery()">
@@ -81,3 +77,10 @@
     </ion-button>
   </form>
 </ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-title class="ion-text-center" size="small">Copyright © 2020 Adote Amor. Todos os direitos reservados.
+    </ion-title>
+  </ion-toolbar>
+</ion-footer>

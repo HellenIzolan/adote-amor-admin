@@ -5,7 +5,7 @@ import { AuthGuard } from './core/guards/auth.guard';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'home',
+    redirectTo: 'admin',
     pathMatch: 'full'
   },
   {
@@ -18,16 +18,8 @@ const routes: Routes = [
     canLoad: [AuthGuard]
   },
   {
-    path: 'home',
-    loadChildren: () => import('./principal/pages/home/home.module').then( m => m.HomePageModule)
-  },
-  {
     path: 'politica-de-privacidade',
     loadChildren: () => import('./principal/pages/politica-de-privacidade/politica-de-privacidade.module').then( m => m.PoliticaDePrivacidadePageModule)
-  },
-  {
-    path: 'inicio',
-    loadChildren: () => import('./site/pages/inicio/inicio.module').then( m => m.InicioPageModule)
   }
 ];
 

@@ -21,7 +21,7 @@ export class LoginPage implements OnInit {
     actionChange: 'Criar uma conta'
   };
 
-  private nameControl = new FormControl('Seu nome completo  ', [Validators.required, Validators.minLength(3)]);
+  private nameControl = new FormControl('', [Validators.required, Validators.minLength(3)]);
 
   constructor(
     private authService: AuthService,
@@ -39,8 +39,8 @@ export class LoginPage implements OnInit {
   private createForm(): void {
     this.authForm = this.fb.group({
       //Validator fara a validacao conforme indicação, neste caso required por ser obrigatorio e email pelo tipo do campo
-      email: ['mail@mail.com', [Validators.required, Validators.email]],
-      password: ['123456', [Validators.required, Validators.minLength(6)]]
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required, Validators.minLength(6)]]
     });
   }
 

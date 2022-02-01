@@ -15,12 +15,8 @@
   </ion-header>
   <ion-list *ngIf="(contas$ | async) as contas">
     <ng-container *ngIf="contas.length > 0; else noContas">
-      <app-conta-item
-        *ngFor="let conta of contas"
-        [conta]="conta"
-        (update)="onUpdate($event)"
-        (delete)="onDelete($event)"
-      ></app-conta-item>
+      <app-conta-item *ngFor="let conta of contas" [conta]="conta" (update)="onUpdate($event)"
+        (delete)="onDelete($event)"></app-conta-item>
     </ng-container>
     <ng-template #noContas>
       <ion-item lines="none">
@@ -29,16 +25,16 @@
     </ng-template>
   </ion-list>
 
-  <ion-fab
-    vertical="bottom"
-    horizontal="end"
-    slot="fixed"
-  >
-    <ion-fab-button
-      routerLink="/admin/contas/create"
-      routerDirection="forward"
-    >
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button routerLink="/admin/contas/create" routerDirection="forward">
       <ion-icon name="add"></ion-icon>
     </ion-fab-button>
   </ion-fab>
 </ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-title class="ion-text-center" size="small">Copyright © 2020 Adote Amor. Todos os direitos reservados.
+    </ion-title>
+  </ion-toolbar>
+</ion-footer>

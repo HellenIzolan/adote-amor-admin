@@ -17,7 +17,6 @@ export class ContasService extends Firestore<Conta> {
   private init(): void {
     this.authService.authState$.subscribe(user => {
       if (user) {
-        // /collection/document/collection/document
         this.setCollection(`/ongs/${user.uid}/contas`, ref => ref.orderBy('titulo', 'desc'));
         return;
       }

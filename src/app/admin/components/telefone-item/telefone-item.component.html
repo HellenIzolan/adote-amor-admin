@@ -3,25 +3,12 @@
     {{ telefone.titulo + " - " + telefone.numero }}
   </ion-item>
   <ion-item-options side="start">
-    <ion-item-option
-      style="width:50px; font-size:10px;"
-      color="danger"
-      (click)="delete.emit(telefone); sliding.close()"
-    >
-      <ion-icon
-        slot="icon-only"
-        name="trash"
-      ></ion-icon>
+    <ion-item-option color="danger" (click)="delete.emit(telefone); sliding.close()">
+      <ion-icon slot="icon-only" name="trash"></ion-icon>
     </ion-item-option>
 
-    <ion-item-option
-      style="width:50px; font-size:10px;"
-      (click)="update.emit(telefone); sliding.close()"
-    >
-      <ion-icon
-        slot="icon-only"
-        name="create"
-      ></ion-icon>
+    <ion-item-option (click)="update.emit(telefone); sliding.close()">
+      <ion-icon slot="icon-only" name="create"></ion-icon>
     </ion-item-option>
   </ion-item-options>
 </ion-item-sliding>

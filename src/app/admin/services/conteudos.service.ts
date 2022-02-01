@@ -17,7 +17,6 @@ export class ConteudosService extends Firestore<Conteudo> {
   private init(): void {
     this.authService.authState$.subscribe(user => {
       if (user) {
-        // /collection/document/collection/document
         this.setCollection(`/ongs/${user.uid}/conteudos`, ref => ref.orderBy('data', 'desc'));
         return;
       }

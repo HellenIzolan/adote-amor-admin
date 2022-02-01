@@ -1,23 +1,18 @@
 <ion-item-sliding #sliding>
   <ion-item (click)="update.emit(adocao)">
     <ion-item padding *ngIf="adocao.imagem">
-      <ion-img padding style="width:50px;" [src]="adocao.imagem"></ion-img>      
+      <ion-img padding style="width:50px;" [src]="adocao.imagem"></ion-img>
     </ion-item>
     {{ adocao.nome }}
-    <ion-toggle
-      slot="end"
-      color="primary"
-      [checked]="adocao.ativo"
-      (ionChange)="ativo.emit(adocao)"
-      (click)="$event.stopPropagation()"
-    ></ion-toggle>
+    <ion-toggle slot="end" color="primary" [checked]="adocao.ativo" (ionChange)="ativo.emit(adocao)"
+      (click)="$event.stopPropagation()"></ion-toggle>
   </ion-item>
   <ion-item-options side="start">
-    <ion-item-option style="width:50px; font-size:10px;" color="danger" (click)="delete.emit(adocao); sliding.close()">
+    <ion-item-option s color="danger" (click)="delete.emit(adocao); sliding.close()">
       <ion-icon slot="icon-only" name="trash"></ion-icon>
     </ion-item-option>
 
-    <ion-item-option style="width:50px; font-size:10px;" (click)="update.emit(adocao); sliding.close()">
+    <ion-item-option (click)="update.emit(adocao); sliding.close()">
       <ion-icon slot="icon-only" name="create"></ion-icon>
     </ion-item-option>
   </ion-item-options>

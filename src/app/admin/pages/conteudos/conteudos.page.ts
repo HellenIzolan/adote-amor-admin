@@ -28,7 +28,6 @@ export class ConteudosPage {
   }
 
   onUpdate(conteudo: Conteudo): void {
-    //this.navCtrl.navigateBack(`/admin/conteudos/edit/${conteudo.id}`);
     this.navCtrl.navigateBack(['admin', 'conteudos', 'edit', conteudo.id]);
   }
 

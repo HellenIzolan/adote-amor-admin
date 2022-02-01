@@ -8,85 +8,41 @@
 </ion-header>
 
 <ion-content padding>
-  <form
-    [formGroup]="marketingForm"
-    (submit)="onSubmit()"
-  >
-    <!-- <ion-item>
-      <ion-icon name="text-outline" slot="start" color="primary"></ion-icon>
-      <ion-input type="text" placeholder="Título" autofocus="true" inputmode="text" formControlName="titulo">
-      </ion-input>
-      <ion-note slot="end" color="danger" *ngIf="titulo.dirty && titulo.hasError('required')">
-        *Obrigatório
-      </ion-note>
-      <ion-note slot="end" color="danger" *ngIf="titulo.dirty && titulo.hasError('minlength')">
-        Mínimo 3 caracteres
-      </ion-note>
-    </ion-item> -->
+  <form [formGroup]="marketingForm" (submit)="onSubmit()">
     <ion-item>
-      <ion-icon
-        name="text-outline"
-        slot="start"
-        color="primary"
-      ></ion-icon>
+      <ion-icon name="text-outline" slot="start" color="primary"></ion-icon>
       <ion-label>Selecione:</ion-label>
-      <ion-select
-        placeholder="Selecione"
-        okText="Ok"
-        cancelText="Fechar"
-        formControlName="titulo"
-      >
+      <ion-select placeholder="Selecione" okText="Ok" cancelText="Fechar" formControlName="titulo">
         <ion-select-option value="Instagram">Instagram</ion-select-option>
         <ion-select-option value="Facebook">Facebook</ion-select-option>
         <ion-select-option value="LinkedIn">LinkedIn</ion-select-option>
         <ion-select-option value="Youtube">Youtube</ion-select-option>
       </ion-select>
-      <ion-note
-        color="danger"
-        *ngIf="titulo.dirty && titulo.hasError('required')"
-      >
+      <ion-note color="danger" *ngIf="titulo.dirty && titulo.hasError('required')">
       </ion-note>
     </ion-item>
     <ion-item>
       <ion-label>Link:</ion-label>
-      <ion-icon
-        name="link"
-        slot="start"
-        color="primary"
-      ></ion-icon>
-      <ion-input
-        type="text"
-        placeholder="Ex: http://google.com/"
-        inputmode="text"
-        formControlName="link"
-      >
+      <ion-icon name="link" slot="start" color="primary"></ion-icon>
+      <ion-input type="text" placeholder="Ex: http://google.com/" inputmode="text" formControlName="link">
       </ion-input>
-      <ion-note
-        slot="end"
-        color="danger"
-        *ngIf="link.dirty && link.hasError('required')"
-      >
+      <ion-note slot="end" color="danger" *ngIf="link.dirty && link.hasError('required')">
         *Obrigatório
       </ion-note>
-      <ion-note
-        slot="end"
-        color="danger"
-        *ngIf="link.dirty && link.hasError('minlength')"
-      >
+      <ion-note slot="end" color="danger" *ngIf="link.dirty && link.hasError('minlength')">
         Mínimo 3 caracteres
       </ion-note>
     </ion-item>
-    <ion-button
-      expand="full"
-      color="tertiary"
-      type="submit"
-      [disabled]="marketingForm.invalid"
-    >
-      <ion-icon
-        slot="start"
-        name="save-outline"
-      ></ion-icon>
+    <ion-button expand="full" color="tertiary" type="submit" [disabled]="marketingForm.invalid">
+      <ion-icon slot="start" name="save-outline"></ion-icon>
       Salvar
     </ion-button>
   </form>
 </ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-title class="ion-text-center" size="small">Copyright © 2020 Adote Amor. Todos os direitos reservados.
+    </ion-title>
+  </ion-toolbar>
+</ion-footer>

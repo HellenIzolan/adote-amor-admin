@@ -15,12 +15,8 @@
   </ion-header>
   <ion-list *ngIf="(telefones$ | async) as telefones">
     <ng-container *ngIf="telefones.length > 0; else noTelefones">
-      <app-telefone-item
-        *ngFor="let telefone of telefones"
-        [telefone]="telefone"
-        (update)="onUpdate($event)"
-        (delete)="onDelete($event)"
-      ></app-telefone-item>
+      <app-telefone-item *ngFor="let telefone of telefones" [telefone]="telefone" (update)="onUpdate($event)"
+        (delete)="onDelete($event)"></app-telefone-item>
     </ng-container>
     <ng-template #noTelefones>
       <ion-item lines="none">
@@ -35,3 +31,10 @@
     </ion-fab-button>
   </ion-fab>
 </ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-title class="ion-text-center" size="small">Copyright © 2020 Adote Amor. Todos os direitos reservados.
+    </ion-title>
+  </ion-toolbar>
+</ion-footer>

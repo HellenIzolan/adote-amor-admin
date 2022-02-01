@@ -15,12 +15,8 @@
   </ion-header>
   <ion-list *ngIf="(marketing$ | async) as marketing">
     <ng-container *ngIf="marketing.length > 0; else noMarketing">
-      <app-marketing-item
-        *ngFor="let marketing of marketing"
-        [marketing]="marketing"
-        (update)="onUpdate($event)"
-        (delete)="onDelete($event)"
-      ></app-marketing-item>
+      <app-marketing-item *ngFor="let marketing of marketing" [marketing]="marketing" (update)="onUpdate($event)"
+        (delete)="onDelete($event)"></app-marketing-item>
     </ng-container>
     <ng-template #noMarketing>
       <ion-item lines="none">
@@ -35,3 +31,10 @@
     </ion-fab-button>
   </ion-fab>
 </ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-title class="ion-text-center" size="small">Copyright © 2020 Adote Amor. Todos os direitos reservados.
+    </ion-title>
+  </ion-toolbar>
+</ion-footer>

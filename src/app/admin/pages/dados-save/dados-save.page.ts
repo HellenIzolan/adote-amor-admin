@@ -8,6 +8,7 @@ import { take, map, finalize } from 'rxjs/operators';
 
 import { DadosService } from '../../services/dados.service';
 import { OverlayService } from 'src/app/core/services/overlay.service';
+import { AuthService } from 'src/app/core/services/auth.service';
 
 @Component({
   selector: 'app-dados-save',
@@ -18,6 +19,7 @@ export class DadosSavePage implements OnInit {
   dadosForm: FormGroup;
   pageTitle = '...';
   dadosId: string = undefined;
+  usuario: string;
 
   ref: AngularFireStorageReference;
   task: AngularFireUploadTask;
@@ -26,6 +28,7 @@ export class DadosSavePage implements OnInit {
   uploadState: Observable<string>;
 
   constructor(
+    private authService: AuthService,
     private fb: FormBuilder,
     private navCtrl: NavController,
     private overlayService: OverlayService,
@@ -37,6 +40,15 @@ export class DadosSavePage implements OnInit {
   ngOnInit(): void {
     this.createForm();
     this.init();
+    this.authService.authState$.subscribe(user => {
+      if (user) {
+        // /collection/document/collection/document
+        this.usuario = user.uid;
+        this.dadosForm.get('id').setValue(this.usuario);
+        console.log(this.usuario)
+      }
+    });
+
   }
   
   init(): void {   
@@ -52,11 +64,11 @@ export class DadosSavePage implements OnInit {
       .pipe(take(1))
       .subscribe(
         ({
+          id,
           razao_social,
           fantasia,
           cnpj,
           email_principal,
-          email_newsletter,
           rua,
           numero,
           complemento,
@@ -72,7 +84,6 @@ export class DadosSavePage implements OnInit {
           this.dadosForm.get('fantasia').setValue(fantasia);
           this.dadosForm.get('cnpj').setValue(cnpj);
           this.dadosForm.get('email_principal').setValue(email_principal);
-          this.dadosForm.get('email_newsletter').setValue(email_newsletter);
           this.dadosForm.get('rua').setValue(rua);
           this.dadosForm.get('numero').setValue(numero);
           this.dadosForm.get('complemento').setValue(complemento);
@@ -89,15 +100,15 @@ export class DadosSavePage implements OnInit {
 
   private createForm(): void {
     this.dadosForm = this.fb.group({
+      id: [''],
       razao_social: ['', [Validators.required, Validators.minLength(3)]],
       fantasia: ['', [Validators.required, Validators.minLength(3)]],
       cnpj: ['', [Validators.required, Validators.minLength(18)]],
       email_principal: ['', [Validators.required, Validators.email]],
-      email_newsletter: ['', [Validators.required, Validators.email]],
-      rua: ['', [Validators.required, Validators.minLength(3)]],
-      numero: ['', [Validators.required]],
+      rua: [''],
+      numero: [''],
       complemento: [''],
-      bairro: ['', [Validators.required, Validators.minLength(3)]],
+      bairro: [''],
       cep: ['', [Validators.required, Validators.minLength(9), Validators.maxLength(9)]],
       cidade: ['', [Validators.required, Validators.minLength(3)]],
       estado: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(2)]],
@@ -121,10 +132,6 @@ export class DadosSavePage implements OnInit {
 
   get email_principal(): FormControl {
     return <FormControl>this.dadosForm.get('email_principal');
-  }
-
-  get email_newsletter(): FormControl {
-    return <FormControl>this.dadosForm.get('email_newsletter');
   }
 
   get rua(): FormControl {
@@ -188,34 +195,32 @@ export class DadosSavePage implements OnInit {
     }
   }
 
-    // function to upload file
-    upload = (event) => {
-      // create a random id
-      const randomId = Math.random().toString(36).substring(2);
-      // create a reference to the storage bucket location
-      this.ref = this.afStorage.ref('/dados/' + randomId);
-      // the put method creates an AngularFireUploadTask
-      // and kicks off the upload
-      this.task = this.ref.put(event.target.files[0]);
-      
-      // AngularFireUploadTask provides observable
-      // to get uploadProgress value
-      /*this.uploadProgress = this.task.snapshotChanges()
-       .pipe(map(s => (s.bytesTransferred / s.totalBytes) * 100));
-      
-      // observe upload progress
-      this.uploadProgress = this.task.percentageChanges();
-      // get notified when the download URL is available
-      */
-     this.task.snapshotChanges().pipe(
-      finalize(() => {
-          this.downloadURL = this.ref.getDownloadURL();
-          this.downloadURL.subscribe( url => { 
-            this.dadosForm.get('logo').setValue(url)})
-          })
-      )
-      .subscribe();
-      this.uploadState = this.task.snapshotChanges().pipe(map(s => s.state));
-
-    }
+  //function para realizar upload de imagens
+  upload = (event) => {
+    // create a random id
+    const randomId = Math.random().toString(36).substring(2);
+    // create a reference to the storage bucket location
+    this.ref = this.afStorage.ref('/dados/' + randomId);
+    // the put method creates an AngularFireUploadTask
+    // and kicks off the upload
+    this.task = this.ref.put(event.target.files[0]);
+    // AngularFireUploadTask provides observable
+    // to get uploadProgress value
+    /*this.uploadProgress = this.task.snapshotChanges()
+      .pipe(map(s => (s.bytesTransferred / s.totalBytes) * 100));
+    
+    // observe upload progress
+    this.uploadProgress = this.task.percentageChanges();
+    // get notified when the download URL is available
+    */
+    this.task.snapshotChanges().pipe(
+    finalize(() => {
+        this.downloadURL = this.ref.getDownloadURL();
+        this.downloadURL.subscribe( url => { 
+          this.dadosForm.get('logo').setValue(url)})
+        })
+    )
+    .subscribe();
+    this.uploadState = this.task.snapshotChanges().pipe(map(s => s.state));
+  }
 }

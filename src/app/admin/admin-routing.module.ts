@@ -8,6 +8,11 @@ const routes: Routes = [
     //canActivateChild: [AuthGuard],
     children: [
       {
+        path: 'dashboard',
+        loadChildren: './pages/dashboard/dashboard.module#DashboardPageModule',
+        canLoad: [AuthGuard]
+      },
+      {
         path: 'dados/create',
         loadChildren: './pages/dados-save/dados-save.module#DadosSavePageModule',
         canLoad: [AuthGuard]
@@ -96,6 +101,11 @@ const routes: Routes = [
         path: 'adocoes',
         loadChildren: './pages/adocoes/adocoes.module#AdocoesPageModule',
         canLoad: [AuthGuard]
+      },
+      {
+        path: '',
+        redirectTo: '/admin/dashboard',
+        pathMatch: 'full'
       }
     ]
   }

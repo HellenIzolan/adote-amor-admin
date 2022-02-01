@@ -4,6 +4,7 @@ import { Platform } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { AuthService } from './core/services/auth.service';
+import { DadosService } from './admin/services/dados.service';
 
 @Component({
   selector: 'app-root',
@@ -14,6 +15,11 @@ export class AppComponent implements OnInit {
   public selectedIndex = 0;
   public user: firebase.User;
   public appPages = [
+    {
+      title: 'Dashboard',
+      url: '/admin/dashboard',
+      icon: 'apps'
+    },
     {
       title: 'Dados',
       url: '/admin/dados',
@@ -43,11 +49,6 @@ export class AppComponent implements OnInit {
       title: 'Animais para Adoção',
       url: '/admin/adocoes',
       icon: 'heart'
-    },
-    {
-      title: 'Acessar site',
-      url: '/home',
-      icon: 'arrow-redo'
     }
   ];
 
@@ -74,4 +75,5 @@ export class AppComponent implements OnInit {
       this.selectedIndex = this.appPages.findIndex(page => page.title.toLowerCase() === path.toLowerCase());
     }
   }
+
 }

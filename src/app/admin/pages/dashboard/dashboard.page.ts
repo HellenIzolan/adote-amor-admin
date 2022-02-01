@@ -3,16 +3,16 @@ import { NavController } from '@ionic/angular';
 import { Observable } from 'rxjs';
 import { take } from 'rxjs/operators';
 
+import { OverlayService } from 'src/app/core/services/overlay.service';
 import { Dados } from '../../models/dados.model';
 import { DadosService } from '../../services/dados.service';
-import { OverlayService } from 'src/app/core/services/overlay.service';
 
 @Component({
-  selector: 'app-dados',
-  templateUrl: './dados.page.html',
-  styleUrls: ['./dados.page.scss']
+  selector: 'app-dashboard',
+  templateUrl: './dashboard.page.html',
+  styleUrls: ['./dashboard.page.scss']
 })
-export class DadosPage {
+export class DashboardPage {
   dados$: any;
 
   constructor(

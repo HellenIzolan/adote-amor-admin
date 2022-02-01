@@ -10,9 +10,10 @@
 <ion-content padding>
   <form [formGroup]="adocaoForm" (submit)="onSubmit()">
     <ion-item>
-      <ion-label>Nome: </ion-label>
+      <ion-label>Nome/Título: </ion-label>
       <ion-icon name="text-outline" slot="start" color="primary"></ion-icon>
-      <ion-input type="text" placeholder="Ex: Bidu" autofocus="true" inputmode="text" formControlName="nome">
+      <ion-input type="text" placeholder="Ex: Bidu, ou Cão Macho Adulto" autofocus="true" inputmode="text"
+        formControlName="nome">
       </ion-input>
       <ion-note slot="end" color="danger" *ngIf="nome.dirty && nome.hasError('required')">
         *Obrigatório
@@ -24,7 +25,8 @@
     <ion-item>
       <ion-label>Sobre: </ion-label>
       <ion-icon name="text-outline" slot="start" color="primary"></ion-icon>
-      <ion-input type="text" placeholder="Ex: Cãozinho abandonado resgatado no dia..." autofocus="true" inputmode="text" formControlName="sobre">
+      <ion-input type="text" placeholder="Ex: Cãozinho abandonado resgatado no dia..." autofocus="true" inputmode="text"
+        formControlName="sobre">
       </ion-input>
       <ion-note slot="end" color="danger" *ngIf="sobre.dirty && sobre.hasError('required')">
         *Obrigatório
@@ -36,23 +38,32 @@
     <ion-item>
       <ion-label>Imagem: </ion-label>
       <ion-icon name="document" slot="start" color="primary"></ion-icon>
-      <ion-input text-left type="file" (change)="upload($event)" accept=".png,.jpg,.jpeg"  autofocus="true"></ion-input>
+      <ion-input text-left type="file" (change)="upload($event)" accept=".png,.jpg,.jpeg" autofocus="true"></ion-input>
       <!--<ion-note slot="end" color="danger" *ngIf="imagem.dirty && imagem.hasError('required')">
         *Obrigatório
       </ion-note>-->
       <ion-input autofocus="true" inputmode="text" formControlName="imagem" hidden> </ion-input>
     </ion-item>
     <ion-item padding *ngIf="imagem.value != ''">
-      <ion-img style="width:200px;" [src]="imagem.value"></ion-img>      
+      <ion-img style="width:200px;" [src]="imagem.value"></ion-img>
     </ion-item>
     <ion-item class="ion-justify-content-center">
-      <a *ngIf="downloadURL | async; let uploadSrc" [href]="uploadSrc" target="_blank">Baixar o arquivo enviado</a>
-      <ion-img *ngIf="downloadURL | async; let url" [src]="url" alt="Image from AngularFireStorage"></ion-img>      
+      <!--<a *ngIf="downloadURL | async; let uploadSrc" [href]="uploadSrc" target="_blank">Baixar o arquivo enviado</a>-->
+      <ion-img *ngIf="downloadURL | async; let url" [src]="url" alt="Image from AngularFireStorage"></ion-img>
     </ion-item>
-    <ion-item> <ion-toggle slot="start" color="primary" formControlName="ativo"></ion-toggle> Ativar Animal </ion-item>
+    <ion-item>
+      <ion-toggle slot="start" color="primary" formControlName="ativo"></ion-toggle> Ativar Animal
+    </ion-item>
     <ion-button expand="full" color="tertiary" type="submit" [disabled]="adocaoForm.invalid">
       <ion-icon slot="start" name="save-outline"></ion-icon>
       Salvar
     </ion-button>
   </form>
 </ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-title class="ion-text-center" size="small">Copyright © 2020 Adote Amor. Todos os direitos reservados.
+    </ion-title>
+  </ion-toolbar>
+</ion-footer>

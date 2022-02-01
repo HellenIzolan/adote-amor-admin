@@ -1,105 +1,57 @@
 <ion-app>
   <ion-split-pane contentId="main-content">
-    <ion-menu
-      contentId="main-content"
-      type="overlay"
-    >
+    <ion-menu contentId="main-content" type="overlay">
       <ion-content *ngIf="user">
         <ion-list id="inbox-list">
           <ion-item>
-            <ion-img
-              style="width:200px; height:200px;margin:auto; display:block;"
-              src="/assets/images/icone.png"
-            ></ion-img>
+            <ion-img style="width:200px; height:200px;margin:auto; display:block;" src="/assets/images/adote-amor.png">
+            </ion-img>
           </ion-item>
           <ion-list-header class="pt-20">
             <ion-label>{{ user.displayName }}</ion-label>
           </ion-list-header>
           <ion-note style="padding-bottom: 0px;">{{ user.email }}</ion-note>
-          <app-logout-button
-            style="float:right;"
-            slot="end"
-            menu="main-content"
-          ></app-logout-button>
-          <ion-menu-toggle
-            auto-hide="false"
-            *ngFor="let p of appPages; let i = index"
-          >
-            <ion-item
-              (click)="selectedIndex = i"
-              routerDirection="root"
-              [routerLink]="[p.url]"
-              lines="none"
-              detail="false"
-              [class.selected]="selectedIndex == i"
-            >
-              <ion-icon
-                slot="start"
-                [ios]="p.icon + '-outline'"
-                [md]="p.icon + '-sharp'"
-              ></ion-icon>
+          <app-logout-button style="float:right;" slot="end" menu="main-content"></app-logout-button>
+          <ion-menu-toggle auto-hide="false" *ngFor="let p of appPages; let i = index">
+            <ion-item (click)="selectedIndex = i" routerDirection="root" [routerLink]="[p.url]" lines="none"
+              detail="false" [class.selected]="selectedIndex == i">
+              <ion-icon slot="start" [ios]="p.icon + '-outline'" [md]="p.icon + '-sharp'"></ion-icon>
               <ion-label>{{ p.title }}</ion-label>
             </ion-item>
           </ion-menu-toggle>
         </ion-list>
-        <ion-item
-          lines="none"
-          link="https://api.whatsapp.com/send?1=pt_BR&phone=5554996233597"
-          style="margin-top:20px; margin-bottom:20px;"
-        >
-          <a
-            href="https://api.whatsapp.com/send?1=pt_BR&phone=5554996233597"
-            target="blank"
-          >
-            <ion-icon
-              slot="start"
-              color="success"
-              size="large"
-              name="logo-whatsapp"
-              style="margin-right:10px;"
-            >
+        <ion-item lines="none" link="https://api.whatsapp.com/send?1=pt_BR&phone=5554996233597"
+          style="margin-top:20px; margin-bottom:20px;">
+          <a href="https://api.whatsapp.com/send?1=pt_BR&phone=5554996233597" target="blank">
+            <ion-icon slot="start" color="success" size="large" name="logo-whatsapp" style="margin-right:10px;">
             </ion-icon>
           </a>
           Dúvidas? Fale conosco!
         </ion-item>
       </ion-content>
-      <ion-content
-        padding
-        *ngIf="!user"
-      >
+      <ion-content padding *ngIf="!user">
         <ion-item>
-          <ion-img
-            style="width:300px; height:300px;margin:auto; display:block;"
-            src="/assets/images/icone.png"
-          ></ion-img>
+          <ion-img style="width:270px; height:270px;margin:auto; display:block;" src="/assets/images/adote-amor.png">
+          </ion-img>
         </ion-item>
-        <ion-item
-          padding
-          lines="none"
-        >
+        <ion-item padding lines="none">
           <h3>Bem vindo</h3>
-          <ion-icon
-            name="paw"
-            color="primary"
-            slot="start"
-          ></ion-icon>
+          <ion-icon name="paw" color="primary" slot="start"></ion-icon>
         </ion-item>
-        <ion-item
-          padding
-          lines="none"
-        >
+        <ion-item padding lines="none">
           <h5>Nós somos Adote Amor</h5>
         </ion-item>
-        <ion-item
-          padding
-          lines="none"
-        >
+        <ion-item padding lines="none">
           <h5>Faça login ou crie sua conta</h5>
-          <ion-icon
-            name="arrow-redo-outline"
-            color="primary"
-            slot="end"
-          ></ion-icon>
+          <ion-icon name="arrow-redo-outline" color="primary" slot="end"></ion-icon>
+        </ion-item>
+        <ion-item lines="none" link="https://api.whatsapp.com/send?1=pt_BR&phone=5554996233597"
+          style="margin-top:20px; margin-bottom:20px;">
+          <a href="https://api.whatsapp.com/send?1=pt_BR&phone=5554996233597" target="blank">
+            <ion-icon slot="start" color="success" size="large" name="logo-whatsapp" style="margin-right:10px;">
+            </ion-icon>
+          </a>
+          Dúvidas? Fale conosco!
         </ion-item>
       </ion-content>
     </ion-menu>

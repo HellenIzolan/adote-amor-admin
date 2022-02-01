@@ -15,12 +15,8 @@
   </ion-header>
   <ion-list *ngIf="(conteudos$ | async) as conteudos">
     <ng-container *ngIf="conteudos.length > 0; else noConteudos">
-      <app-conteudo-item
-        *ngFor="let conteudo of conteudos"
-        [conteudo]="conteudo"
-        (update)="onUpdate($event)"
-        (delete)="onDelete($event)"
-      ></app-conteudo-item>
+      <app-conteudo-item *ngFor="let conteudo of conteudos" [conteudo]="conteudo" (update)="onUpdate($event)"
+        (delete)="onDelete($event)"></app-conteudo-item>
     </ng-container>
     <ng-template #noConteudos>
       <ion-item lines="none">
@@ -35,3 +31,10 @@
     </ion-fab-button>
   </ion-fab>
 </ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-title class="ion-text-center" size="small">Copyright © 2020 Adote Amor. Todos os direitos reservados.
+    </ion-title>
+  </ion-toolbar>
+</ion-footer>

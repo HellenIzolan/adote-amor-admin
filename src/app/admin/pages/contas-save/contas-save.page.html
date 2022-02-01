@@ -8,117 +8,57 @@
 </ion-header>
 
 <ion-content padding>
-  <form
-    [formGroup]="contaForm"
-    (submit)="onSubmit()"
-  >
+  <form [formGroup]="contaForm" (submit)="onSubmit()">
     <ion-item>
       <ion-label>Título:</ion-label>
-      <ion-icon
-        name="text-outline"
-        slot="start"
-        color="primary"
-      ></ion-icon>
-      <ion-input
-        type="text"
-        placeholder="Ex: Caixa Econômica Federal"
-        autofocus="true"
-        inputmode="text"
-        formControlName="titulo"
-      >
+      <ion-icon name="text-outline" slot="start" color="primary"></ion-icon>
+      <ion-input type="text" placeholder="Ex: Caixa Econômica Federal" autofocus="true" inputmode="text"
+        formControlName="titulo">
       </ion-input>
-      <ion-note
-        slot="end"
-        color="danger"
-        *ngIf="titulo.dirty && titulo.hasError('required')"
-      >
+      <ion-note slot="end" color="danger" *ngIf="titulo.dirty && titulo.hasError('required')">
         *Obrigatório
       </ion-note>
-      <ion-note
-        slot="end"
-        color="danger"
-        *ngIf="titulo.dirty && titulo.hasError('minlength')"
-      >
+      <ion-note slot="end" color="danger" *ngIf="titulo.dirty && titulo.hasError('minlength')">
         Mínimo 3 caracteres
       </ion-note>
     </ion-item>
     <ion-item>
       <ion-label>Agência:</ion-label>
-      <ion-icon
-        name="card-outline"
-        slot="start"
-        color="primary"
-      ></ion-icon>
-      <ion-input
-        type="text"
-        placeholder="Ex: 0000."
-        inputmode="text"
-        formControlName="agencia"
-      >
+      <ion-icon name="card-outline" slot="start" color="primary"></ion-icon>
+      <ion-input type="text" placeholder="Ex: 0000." inputmode="text" formControlName="agencia">
       </ion-input>
-      <ion-note
-        slot="end"
-        color="danger"
-        *ngIf="agencia.dirty && agencia.hasError('required')"
-      >
+      <ion-note slot="end" color="danger" *ngIf="agencia.dirty && agencia.hasError('required')">
         *Obrigatório
       </ion-note>
     </ion-item>
     <ion-item>
       <ion-label>Operação:</ion-label>
-      <ion-icon
-        name="card-outline"
-        slot="start"
-        color="primary"
-      ></ion-icon>
-      <ion-input
-        type="text"
-        placeholder="Ex: 01"
-        inputmode="text"
-        formControlName="operacao"
-      >
+      <ion-icon name="card-outline" slot="start" color="primary"></ion-icon>
+      <ion-input type="text" placeholder="Ex: 01" inputmode="text" formControlName="operacao">
       </ion-input>
-      <ion-note
-        slot="end"
-        color="danger"
-        *ngIf="operacao.dirty && operacao.hasError('required')"
-      >
+      <ion-note slot="end" color="danger" *ngIf="operacao.dirty && operacao.hasError('required')">
         *Obrigatório
       </ion-note>
     </ion-item>
     <ion-item>
       <ion-label>Número:</ion-label>
-      <ion-icon
-        name="card-outline"
-        slot="start"
-        color="primary"
-      ></ion-icon>
-      <ion-input
-        type="text"
-        placeholder="Ex: 000000"
-        inputmode="text"
-        formControlName="numero"
-      >
+      <ion-icon name="card-outline" slot="start" color="primary"></ion-icon>
+      <ion-input type="text" placeholder="Ex: 000000" inputmode="text" formControlName="numero">
       </ion-input>
-      <ion-note
-        slot="end"
-        color="danger"
-        *ngIf="numero.dirty && numero.hasError('required')"
-      >
+      <ion-note slot="end" color="danger" *ngIf="numero.dirty && numero.hasError('required')">
         *Obrigatório
       </ion-note>
     </ion-item>
-    <ion-button
-      expand="full"
-      color="tertiary"
-      type="submit"
-      [disabled]="contaForm.invalid"
-    >
-      <ion-icon
-        slot="start"
-        name="save-outline"
-      ></ion-icon>
+    <ion-button expand="full" color="tertiary" type="submit" [disabled]="contaForm.invalid">
+      <ion-icon slot="start" name="save-outline"></ion-icon>
       Salvar
     </ion-button>
   </form>
 </ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-title class="ion-text-center" size="small">Copyright © 2020 Adote Amor. Todos os direitos reservados.
+    </ion-title>
+  </ion-toolbar>
+</ion-footer>

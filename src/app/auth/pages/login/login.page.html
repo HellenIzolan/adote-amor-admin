@@ -1,21 +1,26 @@
+<ion-header class="header-login">
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Bem vindo ao Adote Amor</ion-title>
+  </ion-toolbar>
+</ion-header>
+
 <ion-content padding>
   <ion-grid>
     <ion-row class="ion-justify-content-center">
       <ion-col size-sm="10" size-md="8" size-lg="6" size-xl="6">
         <h1 text-center>
-          <ion-icon
-            name="checkmark-done-outline"
-            color="white"
-            class="icon-7em"
-            style="margin:auto; display:block; padding: 50px;"
-          ></ion-icon>
+          <ion-icon name="checkmark-done-outline" color="white" class="icon-7em"
+            style="margin:auto; display:block; padding: 50px;"></ion-icon>
         </h1>
 
         <form [formGroup]="authForm" (submit)="onSubmit(authProviders.Email)">
           <ng-container *ngIf="!configs.isSignIn">
             <ion-item>
               <ion-icon name="person" color="primary" slot="start"></ion-icon>
-              <ion-input type="text" placeholder="Nome da ONG" formControlName="name"></ion-input>
+              <ion-input type="text" placeholder="Principal Nome da ONG" formControlName="name"></ion-input>
               <ion-note slot="end" color="danger" *ngIf="name.dirty && name.hasError('required')">
                 *Obrigatório
               </ion-note>
@@ -27,7 +32,8 @@
 
           <ion-item>
             <ion-icon name="mail" color="primary" slot="start"></ion-icon>
-            <ion-input type="email" placeholder="E-mail" formControlName="email" inputmode="email" autoFocus="true">
+            <ion-input type="email" placeholder="E-mail da ONG" formControlName="email" inputmode="email"
+              autoFocus="true">
             </ion-input>
             <ion-note slot="end" color="danger" *ngIf="email.dirty && email.hasError('required')">
               *Obrigatório

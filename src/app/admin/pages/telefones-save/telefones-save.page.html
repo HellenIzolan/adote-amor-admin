@@ -24,14 +24,8 @@
     <ion-item>
       <ion-label>Número: </ion-label>
       <ion-icon name="call-outline" slot="start" color="primary"></ion-icon>
-      <ion-input
-        type="tel"
-        placeholder="Ex: (99) 99999-9999"
-        inputmode="text"
-        formControlName="numero"
-        name="phone"
-        [brmasker]="{phone: true}"
-      >
+      <ion-input type="tel" placeholder="Ex: (99) 99999-9999" inputmode="text" formControlName="numero" name="phone"
+        [brmasker]="{phone: true}">
       </ion-input>
       <ion-note slot="end" color="danger" *ngIf="numero.dirty && numero.hasError('required')">
         *Obrigatório
@@ -44,3 +38,10 @@
     </ion-button>
   </form>
 </ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-title class="ion-text-center" size="small">Copyright © 2020 Adote Amor. Todos os direitos reservados.
+    </ion-title>
+  </ion-toolbar>
+</ion-footer>

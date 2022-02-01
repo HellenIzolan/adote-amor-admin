@@ -15,13 +15,8 @@
   </ion-header>
   <ion-list *ngIf="(adocoes$ | async) as adocoes">
     <ng-container *ngIf="adocoes.length > 0; else noAdocoes">
-      <app-adocao-item
-        *ngFor="let adocao of adocoes"
-        [adocao]="adocao"
-        (update)="onUpdate($event)"
-        (delete)="onDelete($event)"
-        (ativo)="onAtivo($event)"
-      ></app-adocao-item>
+      <app-adocao-item *ngFor="let adocao of adocoes" [adocao]="adocao" (update)="onUpdate($event)"
+        (delete)="onDelete($event)" (ativo)="onAtivo($event)"></app-adocao-item>
     </ng-container>
     <ng-template #noAdocoes>
       <ion-item lines="none">
@@ -36,3 +31,10 @@
     </ion-fab-button>
   </ion-fab>
 </ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-title class="ion-text-center" size="small">Copyright © 2020 Adote Amor. Todos os direitos reservados.
+    </ion-title>
+  </ion-toolbar>
+</ion-footer>

@@ -106,16 +106,11 @@ export class ConteudosSavePage implements OnInit {
     }
   }
 
-  // function to upload file
+  //function para realizar upload de imagens
   upload = (event) => {
-    // create a random id
     const randomId = Math.random().toString(36).substring(2);
-    // create a reference to the storage bucket location
     this.ref = this.afStorage.ref('/conteudos/' + randomId);
-    // the put method creates an AngularFireUploadTask
-    // and kicks off the upload
     this.task = this.ref.put(event.target.files[0]);
-    // get notified when the download URL is available
     this.task.snapshotChanges().pipe(
       finalize(() => {
           this.downloadURL = this.ref.getDownloadURL();

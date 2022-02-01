@@ -1,4 +1,4 @@
-export interface Dados {
+export interface Ong {
   id: string;
   razao_social: string;
   fantasia: string;
